@@ -38,7 +38,7 @@ public class CartController {
         return new ResponseEntity<>(new ApiResponse(true, "Added"), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/mycart")
+    @GetMapping(value = "/")
     public ResponseEntity<CartDto> getCartItem(@RequestParam(value = "userId") Long userId) throws Exception {
         User user = userService.findUserById(userId);
 

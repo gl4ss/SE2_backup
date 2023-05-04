@@ -25,7 +25,7 @@ public class CategoryController {
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Create new category"), HttpStatus.CREATED );
     }
 
-    @GetMapping("/list")
+    @GetMapping("/list/")
     public ResponseEntity<List<Category>> listCategory(){
         List<Category> body = categoryService.listCategory();
         return new ResponseEntity<>(body, HttpStatus.OK);
@@ -44,10 +44,6 @@ public class CategoryController {
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public Category getCategoryByID(@PathVariable(value = "id") Long id) throws Exception {
-        return categoryService.getCategoryByID(id);
-    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<ApiResponse> deleteCategory(@PathVariable(value = "id") Long id) throws Exception {
