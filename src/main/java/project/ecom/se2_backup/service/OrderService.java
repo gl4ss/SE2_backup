@@ -21,8 +21,6 @@ public class OrderService {
     @Value("${STRIPE_SECRET_KEY}")
     private String apiKey;
     public Session createSession(List<CheckOutItem> checkOutItemList) throws StripeException {
-//        String successUrl = baseUrl + "payment/success";
-//        String failureUrl = baseUrl + "payment/failed";
 
         Stripe.apiKey = apiKey;
 
