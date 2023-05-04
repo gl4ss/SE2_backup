@@ -40,7 +40,7 @@ public class CartService {
     }
 
     public CartDto listCartItems(User user) {
-        List<Cart> carts = cartRepository.findAllByUserOrder(user);
+        List<Cart> carts = cartRepository.findAllByUserOrderByCreatedDateDesc(user);
 
         List<CartItemDto> cartItems = new ArrayList<>();
         double totals =0;

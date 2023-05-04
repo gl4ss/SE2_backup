@@ -6,6 +6,7 @@ import project.ecom.se2_backup.model.User;
 
 import java.util.List;
 
+
 public interface CartRepository extends JpaRepository<Cart, Long> {
-    List<Cart> findAllByUserOrder(User user);
+    List<Cart> findAllByUserOrderByCreatedDateDesc(User user);
 }
