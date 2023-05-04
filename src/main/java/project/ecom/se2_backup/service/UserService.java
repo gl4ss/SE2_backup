@@ -6,11 +6,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import project.ecom.se2_backup.model.Product;
 import project.ecom.se2_backup.model.User;
 import project.ecom.se2_backup.repository.UserRepository;
 import project.ecom.se2_backup.security.CustomUser;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -36,6 +38,17 @@ public class UserService implements UserDetailsService {
 
     public void deleteUser(User user) {
         userRepository.delete(user);
+    }
+
+    public void updateUser(User user) {
+        User preUser = userRepository.getUserByEmail(user.getEmail());
+
+        if (preUser != null) {
+            preUser.setFirstName(user.getFirstName());
+            preUser.setLastName(user.getLastName());
+            preUser.setEmail(user.getEmail());
+            saveUser(preUser);
+        }
     }
 
     public boolean existByEmail(String username) {
