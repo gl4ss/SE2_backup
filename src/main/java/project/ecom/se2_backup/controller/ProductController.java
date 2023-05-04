@@ -23,7 +23,7 @@ public class ProductController {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<ProductDto>> getAllProducts() {
         List<ProductDto> products = productService.getProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);

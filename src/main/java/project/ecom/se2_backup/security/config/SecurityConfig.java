@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .hasAuthority(String.valueOf(new SimpleGrantedAuthority("ADMIN")))
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/cart/addtocart/**", "/cart", "/category/list/**", "/order/**", "/product", "/product/add", "user/**")
+                .requestMatchers("/cart/**", "/category/list", "/order/**", "/product/", "/product/add", "user/**")
                 .hasAuthority(String.valueOf(new SimpleGrantedAuthority("USER")))
                 .anyRequest()
                 .authenticated()
