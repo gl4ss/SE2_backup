@@ -1,37 +1,36 @@
 package project.ecom.se2_backup.dto;
 
-import jakarta.validation.constraints.NotNull;
-
+import java.util.List;
 
 public class CartDto {
-    private Long id;
-    private @NotNull Long productId;
-    private @NotNull int quantity;
+    private long orderNum;
+    private List<CartItemDto> cartItemDtos;
+    private double totals;
 
     public CartDto() {
     }
 
-    public Long getId() {
-        return id;
+    public long getOrderNum() {
+        return orderNum;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderNum(long orderNum) {
+        this.orderNum = orderNum;
     }
 
-    public Long getProductId() {
-        return productId;
+    public List<CartItemDto> getCartItemDtos() {
+        return cartItemDtos;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setCartItemDtos(List<CartItemDto> cartItemDtos) {
+        this.cartItemDtos = cartItemDtos;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getTotal() {
+        return totals;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setTotal(double totals) {
+        this.totals = totals;
     }
 }
