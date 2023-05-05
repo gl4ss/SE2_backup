@@ -2,6 +2,9 @@ package project.ecom.se2_backup.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import project.ecom.se2_backup.dto.ProductDto;
@@ -43,6 +46,21 @@ public class ProductService {
         List<Product> allProduct = productRepository.findAll();
         List<ProductDto> productDtos = new ArrayList<>();
         for (Product product : allProduct){
+            productDtos.add(getProductDto(product));
+        }
+        return productDtos;
+    }
+
+    public List<ProductDto> sortProducts(String sortBy) {
+        List<Product> sortedProducts;
+        if (sortBy.equals("category")) {
+            sortedProducts = productRepository.sortProductsByCategory(sortBy);
+        } else {
+            sortedProducts = productRepository.findAll(Sort.by(Sort.Direction.ASC, sortBy));
+        }
+
+        List<ProductDto> productDtos = new ArrayList<>();
+        for (Product product : sortedProducts){
             productDtos.add(getProductDto(product));
         }
         return productDtos;
