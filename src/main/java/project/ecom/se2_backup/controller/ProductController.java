@@ -23,19 +23,18 @@ public class ProductController {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @GetMapping()
+    @GetMapping("/list/")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
         List<ProductDto> products = productService.getProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/list/{productId}")
     public ResponseEntity<List<ProductDto>> getProductById(@PathVariable Long productId) throws Exception {
         List<ProductDto> products = productService.getProductById(productId);
         return new ResponseEntity<>(products, HttpStatus.OK);
-
-
     }
+
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> createProduct(@RequestBody ProductDto productDto){

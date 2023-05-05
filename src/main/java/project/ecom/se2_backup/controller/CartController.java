@@ -47,7 +47,7 @@ public class CartController {
 
     }
 
-    @DeleteMapping(value = "delete/{cartItemId}")
+    @DeleteMapping(value = "/delete/{cartItemId}")
     public ResponseEntity<ApiResponse> deleteCartItem(@PathVariable(value = "cartItemId") Long cartItemId,
                                                       @RequestParam(value = "userId") Long userId) throws Exception {
         User user = userService.findUserById(userId);
