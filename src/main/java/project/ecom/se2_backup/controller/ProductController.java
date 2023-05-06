@@ -23,6 +23,7 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
     @Autowired
     CategoryRepository categoryRepository;
     @Autowired
@@ -40,6 +41,12 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<List<ProductDto>> sortProducts(@RequestParam String sortBy) {
+        return new ResponseEntity<>(
+                productService.sortProducts(sortBy),
+                HttpStatus.OK);
+    }
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> createProduct(@RequestBody ProductDto productDto){

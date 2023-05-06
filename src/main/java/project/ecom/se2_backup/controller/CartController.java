@@ -26,7 +26,7 @@ public class CartController {
     UserService userService;
 
 
-
+    @GetMapping("/addtocart")
     public ResponseEntity<ApiResponse> addToCart(@RequestBody AddToCartDto addToCartDto,
                                                  @RequestParam(value = "userId") Long userId ) throws Exception {
 
