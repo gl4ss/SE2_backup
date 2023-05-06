@@ -6,9 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.ecom.se2_backup.common.ApiResponse;
+import project.ecom.se2_backup.dto.DiscountDto;
 import project.ecom.se2_backup.dto.ProductDto;
 import project.ecom.se2_backup.model.Category;
+import project.ecom.se2_backup.model.Discount;
 import project.ecom.se2_backup.repository.CategoryRepository;
+import project.ecom.se2_backup.service.DiscountService;
 import project.ecom.se2_backup.service.ProductService;
 
 import java.util.List;
@@ -22,6 +25,8 @@ public class ProductController {
     ProductService productService;
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    DiscountService discountService;
 
     @GetMapping("/list/")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
@@ -63,5 +68,15 @@ public class ProductController {
         productService.deleteProduct(productDto, productId);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "deleted"), HttpStatus.OK);
     }
+
+    @PostMapping("/addDiscount/{productId}")
+    public ResponseEntity<ApiResponse> addDiscount(@RequestParam(value = "productId") Long productId,
+                                                   @RequestBody Discount discount) throws Exception{
+        productService.addDiscount(productId, discount);
+        return new ResponseEntity<>(new ApiResponse(true, "Added discount to product"), HttpStatus.OK);
+
+
+    }
+
 
 }

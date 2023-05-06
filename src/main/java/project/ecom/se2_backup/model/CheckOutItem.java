@@ -4,8 +4,8 @@ public class CheckOutItem {
     private String productName;
     private int quantity;
     private double price;
-    private long productId;
-    private long userId;
+    private Long productId;
+    private Long userId;
 
     public CheckOutItem() {
     }
@@ -34,19 +34,19 @@ public class CheckOutItem {
         this.price = price;
     }
 
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(long productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 }

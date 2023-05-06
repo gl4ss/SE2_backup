@@ -4,9 +4,12 @@ package project.ecom.se2_backup.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import project.ecom.se2_backup.dto.DiscountDto;
 import project.ecom.se2_backup.dto.ProductDto;
 import project.ecom.se2_backup.model.Category;
+import project.ecom.se2_backup.model.Discount;
 import project.ecom.se2_backup.model.Product;
+import project.ecom.se2_backup.repository.DiscountRepository;
 import project.ecom.se2_backup.repository.ProductRepository;
 
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ import java.util.Optional;
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    DiscountRepository discountRepository;
 
     public void createProduct(ProductDto productDto, Category category) {
         Product product = new Product();
@@ -81,6 +86,18 @@ public class ProductService {
             productDtos.add(getProductDto(product));
         }
         return productDtos;
+
+    }
+
+    public void addDiscount(Long productId, Discount discount) throws Exception {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+
+        if(!optionalProduct.isPresent()){
+            throw new Exception("No product presents");
+        }
+        Product product = optionalProduct.get();
+        product.setDiscount(discount);
+        productRepository.save(product);
 
     }
 }

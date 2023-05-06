@@ -18,8 +18,11 @@ public class Product {
 
      @ManyToOne
      @JoinColumn(name="category_id")
-     Category category;
+     private Category category;
 
+     @OneToOne
+     @JoinColumn(name = "discount_id")
+     private Discount discount;
     public Product() {
     }
 
@@ -71,5 +74,12 @@ public class Product {
         this.category = category;
     }
 
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
 }
 
