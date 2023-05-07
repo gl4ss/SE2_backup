@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(user.getPassword());
         return userRepository.save(user);
     }
 
@@ -51,9 +51,9 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public boolean existByEmail(String username) {
-        return userRepository.existsByEmail(username);
-    }
+//    public boolean existByEmail(String username) {
+//        return userRepository.existsByEmail(username);
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
