@@ -34,9 +34,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Register register) {
-//        if (userService.existByEmail(register.getEmail())) {
-//            return new ResponseEntity<>("Email is already taken, please try again", HttpStatus.BAD_REQUEST);
-//        }
 
         User user = new User();
         user.setFirstName(register.getFirstName());
